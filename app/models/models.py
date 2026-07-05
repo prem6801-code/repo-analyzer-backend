@@ -5,8 +5,9 @@ class Chunk(BaseModel):
     repo_name: str
     file_path: str
     language: str
-    chunk_index: int
     content: str
+    start_line: int
+    end_line: int
 
 class Repository(BaseModel):
     repo_name: str
