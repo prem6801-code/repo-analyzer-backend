@@ -11,9 +11,10 @@ async def health_check():
 
 
 @router.get("/clone-repo")
-async def clone_repo(name: str, repo_url: str):
+# async def clone_repo(name: str, repo_url: str):
+async def clone_repo():
     try:
-        print(f"Cloning repository from {repo_url} into {name}...")
+        # print(f"Cloning repository from {repo_url} into {name}...")
 
         # clone_path = clone_repository(repo_url, name)
         clone_path = './repos/stock_market_analysis'
@@ -23,13 +24,14 @@ async def clone_repo(name: str, repo_url: str):
         return {
             "success": True,
             "message": "Repository cloned successfully.",
-            "repository_name": name,
-            "repository_url": repo_url,
+            # "repository_name": name,
+            # "repository_url": repo_url,
             "clone_path": clone_path,
-            # "scan_results": scan_results
+            "scan_results": scan_results
         }
 
     except Exception as e:
+        print(f"Error occurred while cloning the repository: {str(e)}")
         raise HTTPException(
             status_code=500,
             detail=str(e)
